@@ -4,46 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Temporizador</title>
+    <script src="script.js"></script>
     <link rel="shortcurt icon" href="icones/clock-icon-aba.png" type="image/x-png">
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <div id="conteudo">
-        <div id="relogio">
-            <div id="contador">
-                <span id="min">25</span>
-                <span>:</span>
-                <span id="seg">00</span>
-            </div>
-            <div id="opcoesTimer">
-                <button id="btnpausar">Pausar</button>
-                <button id="btniniciar">Iniciar</button>
-                <button id="btnresetar">Resetar</button>
-            </div>
+<section id="conteudo">
+    <div id="relogio">
+        <div id="contador">
+            <span id="min">25</span>
+            <span>:</span>
+            <span id="seg">00</span>
         </div>
-        <form id="controles"> 
-            <div>
-                <label for="iptmin">Minutos</label>
-                <input list="iptmin">
-                <datalist id="iptmin">
-                    <option value="0"></option>
-                </datalist>
-            </div>
-
-            <div>
-                <label for="iptseg">Segundos</label>
-                <input list="iptseg">
-                <datalist id="iptseg">
-                    <option value="0"></option>
-                </datalist>
-            </div>
-        </form>
+        <div id="opcoesTimer">
+            <button id="btnpausar">Pausar</button>
+            <button id="btniniciar">Iniciar</button>
+            <button id="btnresetar">Resetar</button>
+        </div>
     </div>
-    <footer style="text-align: center;">
-        Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
-    </footer>
-    
-    <script src="script.js"></script>
+    <form id="controles"> 
+        <div>
+            <label for="iptmin">Minutos</label>
+            <input list="iptmin">
+            <datalist id="iptmin">
+                <option value="0"></option>
+            </datalist>
+        </div>
+        <div>
+            <label for="iptseg">Segundos</label>
+            <input list="iptseg">
+            <datalist id="iptseg">
+                <option value="0"></option>
+            </datalist>
+        </div>
+    </form>
+</section>
+<footer style="text-align: center;">
+    Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+</footer>
     <script>
         function adicionarOptions(inicio = 0, fim = 0, id) {
             let datalist = document.getElementById(id);
