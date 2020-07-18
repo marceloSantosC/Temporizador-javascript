@@ -1,0 +1,93 @@
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#conteudo {
+    padding: 0;
+    border: 0;
+    margin: auto;
+    width: 50vw;
+    height: 50vh;
+    margin-top: 25vh;
+}
+
+#relogio {
+    width: 100%;
+    height: 40%;
+}
+#contador {
+    width: 50%;
+    height: 70%;
+    margin: auto;
+}
+#contador > span {
+    padding: 0;
+    margin: auto;
+    border: 0;
+    font-size: 9vw;
+    color: #696767;
+}
+
+#opcoesTimer {
+    width: 50%;
+    height:30%;
+    margin: auto;
+}
+
+#opcoesTimer > button {
+    outline: none;
+    border: none;
+    float: left;
+    text-decoration: none;
+    color: #fff;
+    width: 33.33%;
+    height: 100%;
+    font-size: 2vw;
+    background-color: #4169e1;
+    text-align: center;
+}
+
+#opcoesTimer > button:hover{
+    background-color: #2041a5;
+}
+
+#opcoesTimer > button:active{
+    background-color:#3157c9;
+}
+
+#controles {
+    width: 50%;
+    display: block;
+    margin: auto;
+}
+
+
+#controles label {
+    padding: 0;
+    border: 0;
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 2vw;
+    font-weight: bold;
+    color: #696767;
+}
+
+
+#controles input {
+    display: block;
+    margin: auto;
+    width: 75%;
+    font-size: 2vw;
+    color: #696767;
+    text-align: center;
+}
+
+#controles div {
+    float: left;
+    width: 50%;
+    margin: auto;
+}
+
+
