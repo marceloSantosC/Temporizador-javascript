@@ -74,7 +74,6 @@ body {
 }
 
 #controles label {
-    padding-left: 5%;
     font-size: 2vw;
     font-weight: bold;
     color: #696767;
@@ -83,10 +82,10 @@ body {
 
 #controles input {
     display: flex;
-    width: 95%;
-    margin: auto;
+    width: 50%;
     font-size: 2vw;
     color: #696767;
+    text-align: center;
 }
 
 #footer {
@@ -99,13 +98,17 @@ body {
 
 @media only screen and (max-width: 600px) {
     #contador > span {
-        font-size: 13vw;
+        font-size: 15vw;
+    }
+    #opcoesTimer > button {
+        font-size: 6vw;
     }
     #controles label {
         font-size: 4vw;
     }
     #controles input {
         width: 100%;
+        font-size: 4vw;
     }
     #controles {
         flex-direction: column;
@@ -113,6 +116,8 @@ body {
     #footer {
         font-size: 3vw;
     }
+
+
 }
 
 

@@ -24,16 +24,16 @@
     </div>
         <form id="controles"> 
             <div>
-                <label for="iptmin">Minutos</label>
-                <input list="iptmin">
-                <datalist id="iptmin">
+                <label for="datalistmin">Minutos</label>
+                <input list="datalistmin" id="inputmin" value="25">
+                <datalist id="datalistmin">
                     <option value="0"></option>
                 </datalist>
             </div>
             <div>
-                <label for="iptseg">Segundos</label>
-                <input list="iptseg">
-                <datalist id="iptseg">
+                <label for="datalistseg">Segundos</label>
+                <input list="datalistseg" id="inputseg" value="00">
+                <datalist id="datalistseg">
                     <option value="0"></option>
                 </datalist>
             </div>
@@ -44,7 +44,7 @@
 </footer>
     <script>
         function adicionarOptions(inicio = 0, fim = 0, id) {
-            let datalist = document.getElementById(id);
+            const datalist = document.getElementById(id);
             let opt;
             for(let i = inicio; i < fim; i++) {
                 opt = document.createElement('option');
@@ -52,24 +52,44 @@
                 datalist.appendChild(opt);
             }
         }
+        
+        function onchangeDatalist(){
+            const min = document.getElementById("inputmin");
+            const seg = document.getElementById("inputseg");
+
+            min.addEventListener("change", () => {
+                document.getElementById("min").innerHTML = min.value;
+            });
+
+            seg.addEventListener("change", () => {
+                document.getElementById("seg").innerHTML = seg.value;
+            });
+
+        }
 
         function gerenciarEventosDom(timer) {
             document.getElementById("btnpausar").addEventListener("click", timer.pausar);
             document.getElementById("btniniciar").addEventListener("click", timer.contar);
             document.getElementById("btnresetar").addEventListener("click", timer.resetar);
+            onchangeDatalist();
         }
 
-        (function configurarDatalistMinutoSegundos(){
-            adicionarOptions(1, 60, "iptmin");
-            adicionarOptions(1, 60, "iptseg");
-        })();
+        function configurarDatalistMinutoSegundos(){
+            adicionarOptions(1, 60, "datalistmin");
+            adicionarOptions(1, 60, "datalistseg");
+            function definirValorPadraoOpt() {
+                
+            }
+        }
 
-        (function configurar() {
-            const tempo = new Tempo("min", "seg");
-            const timer = new Timer(tempo.getMinutos(), tempo.getSegundos(), tempo.notificar);
+        function configurar() {
+            const timerServices = new TimerServices("min", "seg");
+            const timer = new Timer(timerServices.getMinutos(), timerServices.getSegundos(), timerServices.notificar);
             gerenciarEventosDom(timer);
-        })();
+            configurarDatalistMinutoSegundos();
+        }
 
+        configurar();
     </script>
 </body>
 </html>

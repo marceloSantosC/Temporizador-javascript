@@ -1,8 +1,6 @@
 function Timer(minutos, segundos, notificar = () => {}){
-
     this.minutos = minutos;
     this.segundos = segundos;
-    this.notificar = notificar;
     this.pausado;
     let intervalo;
     this.decrementarTempo = () => {
@@ -19,7 +17,7 @@ function Timer(minutos, segundos, notificar = () => {}){
                 this.segundos--;
                 this.segundos < 10 ? '0' + this.segundos :  this.segundos;
             }
-            this.notificar(this.minutos, this.segundos, this.terminado)
+            notificar(this.minutos, this.segundos, this.terminado)
         }
     }
     this.contar = function(){
@@ -37,7 +35,6 @@ function Timer(minutos, segundos, notificar = () => {}){
     }.bind(this);
     this.resetar = function() {
         clearInterval(intervalo);
-        this.despausar;
         this.minutos = minutos;
         this.segundos = segundos;
         notificar(minutos, segundos)
@@ -48,7 +45,7 @@ function Timer(minutos, segundos, notificar = () => {}){
     }.bind(this);
 }
 
-function Tempo(idmin, idseg){
+function TimerServices(idmin, idseg){
     min = document.getElementById(idmin);
     seg = document.getElementById(idseg);
 
