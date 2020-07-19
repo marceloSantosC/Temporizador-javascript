@@ -97,5 +97,23 @@ body {
     font-size: 1.5vw;
 }
 
+@media only screen and (max-width: 600px) {
+    #contador > span {
+        font-size: 13vw;
+    }
+    #controles label {
+        font-size: 4vw;
+    }
+    #controles input {
+        width: 100%;
+    }
+    #controles {
+        flex-direction: column;
+    }
+    #footer {
+        font-size: 3vw;
+    }
+}
+
 
 
