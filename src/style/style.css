@@ -7,6 +7,7 @@
 body {
     margin: 0;
     background-color: rgb(226, 225, 225);
+    height: 100vh;
 }
 
 #conteudo {
@@ -15,7 +16,7 @@ body {
     align-items: center;
     width: 100vw;
     padding-top: 10rem;
-    margin-bottom: 10rem;
+    margin-bottom: 3rem;
 }
 
 
@@ -47,6 +48,7 @@ body {
     padding: 0;
     border-radius: 100%;
     transition: 0.3s;
+    cursor: pointer;
 }
 
 #opcoesTimer button + button {
@@ -55,8 +57,9 @@ body {
 
 #opcoesTimer button:hover{
     background-color: rgb(126, 125, 125);
-    cursor: pointer;
 }
+
+
 
 #opcoesTimer button:active{
     background-color: #fff;
@@ -101,6 +104,52 @@ body {
 
 #audio {
     display: none;
+}
+
+#alertafimevento {
+    visibility: hidden;
+    position: absolute;
+    top: 5rem;
+    width: 100%;
+    height: 10rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgba(199, 195, 195, 0.459);
+    margin-top: 0.5rem;
+    width: 18rem;
+    border-radius: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#alertafimevento p{
+    align-self: center;
+    font-size: 1.25rem;
+    color: #494949;
+    margin: 0;
+    padding: 1rem;
+}
+
+
+#alertafimevento button{
+    font-size: 1rem;
+    outline: 0;
+    color: #fff;
+    border: 0;
+    width: 4rem;
+    align-self: center;
+    padding: 0.4rem;
+    align-self: center;
+    width: 50%;
+    height: 30%;
+    background-color: rgb(113, 137, 211);
+    cursor: pointer;
+    border-radius: 0.5rem;
+    transition: 0.4s;
+}
+
+#alertafimevento button:hover {
+    background-color: rgb(93, 117, 189);
 }
 
 @media (min-width: 700px) {
