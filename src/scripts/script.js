@@ -66,8 +66,10 @@ function TimerServices(idmin, idseg){
     });
 
     this.reiniciar = function() {
-        this.resetar();
-        this.iniciar();
+        if(this.getMinutos > 0 || this.getSegundos > 0) {
+            this.resetar();
+            this.iniciar();
+        }
         this.notificarFimDaContagem(1);
     }.bind(this);
 
