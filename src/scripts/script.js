@@ -16,15 +16,16 @@ function Timer(minutos, segundos, callback = () => {}){
         if(!this.pausado) {
             if(this.minutos == 00 & this.segundos == 00) {
                 this.pausado = true;
+                callback(true);
             }
-            else if(this.segundos == 0 || this.minutos == 1) {
+            else if(this.segundos == 0) {
                 this.minutos--;
                 this.segundos = 59;
             }
             else if(this.segundos > 0) {                    
                 this.segundos--;
             }
-            callback(this.minutos, this.segundos)
+            callback(false ,this.minutos, this.segundos);
         }
     }
     this.contar = function(){
@@ -46,24 +47,51 @@ function Timer(minutos, segundos, callback = () => {}){
         clearInterval(intervalo);
         this.minutos = valorInicial.min;
         this.segundos = valorInicial.seg;
-        callback(this.minutos, this.segundos);
-    }.bind(this);
-    this.terminar = function() {
-        this.terminado = true;
-        callback(this.minutos, this.segundos, this.terminado);
+        callback(false ,this.minutos, this.segundos);
     }.bind(this);
 }
 
 function TimerServices(idmin, idseg){
     this.min = document.getElementById(idmin);
     this.seg = document.getElementById(idseg);
-    this.timer = new Timer(min.innerHTML, seg.innerHTML, (minutos, segundos, terminado) => {
-        if(!terminado) {
+    this.terminado = false;
+    this.timer = new Timer(min.innerHTML, seg.innerHTML, (terminado, minutos, segundos) => {
+        this.terminado = terminado;
+        if(!this.terminado) {
             this.setMinutos(minutos);
             this.setSegundos(segundos);
+        } else if (this.terminado) {
+            this.notificarFimDaContagem(0);
         }
     });
 
+    this.reiniciar = () => {
+        this.resetar();
+        this.iniciar();
+        this.notificarFimDaContagem(1);
+    }
+
+    this.notificarFimDaContagem = (acao) => {
+        const alertaFimDoEvento = document.getElementById('alertafimevento');
+        if(acao == 0) {
+            this.tocarOuReiniciarMusica(0);
+            alertaFimDoEvento.style = 'visibility: visible;';
+        } else {
+            this.tocarOuReiniciarMusica(1);
+            alertaFimDoEvento.style = 'visibility: hidden;';
+        }
+    }
+
+    this.tocarOuReiniciarMusica = (acao) =>{
+        const audio = document.getElementById('audio');
+        if(acao == 0) {
+            audio.play();
+        } else {
+            audio.pause();
+            audio.currentTime = 0;
+        }
+    }
+    
     this.pausar = function() {
         this.timer.pausar();
     }.bind(this);

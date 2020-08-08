@@ -9,9 +9,13 @@
 </head>
 <body>
 <main id="conteudo" >
+    <div id="alertafimevento">
+        <p>O cronômetro chegou a 0!</p>
+        <button type="button" id="reiniciar">Reiniciar</button>
+    </div>
     <div id="relogio">
         <div id="contador">
-            <span id="min">0</span>
+            <span id="min">01</span>
             <span>:</span>
             <span id="seg">0</span>
         </div>
@@ -31,20 +35,17 @@
             <div>
                 <label for="selectmin">Minutos</label>
                 <select name="selectmin" id="minselect">
-                    <option value="0" hidden selected>00</option>
                 </select>
             </div>
             <div>
                 <label for="selectseg">Segundos</label>
                 <select name="selectseg" id="segselect" value="0">
-                    <option value="0" hidden selected>00</option>
                 </select>
             </div>
         </form>
-        <audio src="resources/audio/default.mp3">
-
-        </audio>
+        <audio src="resources/audio/default.mp3" id="audio"></audio>
 </main>
+
 <footer id="footer">
     Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
 </footer>
@@ -55,6 +56,9 @@
             let opt;
             for(let i = inicio; i < fim; i++) {
                 opt = new Option(i, i);
+                if(i == selected) {
+                    opt.setAttribute('selected', 'selected');
+                }
                 select.appendChild(opt);
             }
         }
@@ -73,6 +77,7 @@
         }
 
         function gerenciarEventosDom(timerServices) {
+            document.getElementById("reiniciar").addEventListener("click", timerServices.reiniciar);
             document.getElementById("btnpausar").addEventListener("click", timerServices.pausar);
             document.getElementById("btniniciar").addEventListener("click", timerServices.iniciar);
             document.getElementById("btniniciar").addEventListener("click", timerServices.iniciar);
@@ -81,14 +86,17 @@
         }
 
         (function configurarDatalistMinutoSegundos(){
-            adicionarOptions(1, 60, "minselect", 25);
-            adicionarOptions(1, 60, "segselect", 0);
+            adicionarOptions(0, 60, "minselect", 1);
+            adicionarOptions(0, 60, "segselect", 0);
         })();
         
         const timerService = new TimerServices("min", "seg");
-        timerService.setMinutos(0);
-        timerService.setSegundos(0);
-        gerenciarEventosDom(timerService);
+
+        window.addEventListener("load", () => {
+            timerService.setMinutos(1);
+            timerService.setSegundos(0);
+            gerenciarEventosDom(timerService);
+        });
 
 </script>
 </body>

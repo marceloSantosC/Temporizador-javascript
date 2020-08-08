@@ -1,4 +1,4 @@
-# Temporizador javascript ![relógio](/icones/clock-icon-aba.png)
+# Temporizador javascript ![relógio](resources/images/icons/clock-icon-aba.png)
 ## Descrição :clipboard:
 Temporizador criado usando apenas HTML, Css e JS. 
 ## Objetivo :running:
