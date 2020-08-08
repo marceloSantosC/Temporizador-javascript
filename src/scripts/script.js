@@ -65,13 +65,13 @@ function TimerServices(idmin, idseg){
         }
     });
 
-    this.reiniciar = () => {
+    this.reiniciar = function() {
         this.resetar();
         this.iniciar();
         this.notificarFimDaContagem(1);
-    }
+    }.bind(this);
 
-    this.notificarFimDaContagem = (acao) => {
+    this.notificarFimDaContagem = function (acao) {
         const alertaFimDoEvento = document.getElementById('alertafimevento');
         if(acao == 0) {
             this.tocarOuReiniciarMusica(0);
@@ -80,9 +80,9 @@ function TimerServices(idmin, idseg){
             this.tocarOuReiniciarMusica(1);
             alertaFimDoEvento.style = 'visibility: hidden;';
         }
-    }
+    }.bind(this);
 
-    this.tocarOuReiniciarMusica = (acao) =>{
+    this.tocarOuReiniciarMusica = function (acao) {
         const audio = document.getElementById('audio');
         if(acao == 0) {
             audio.play();
@@ -90,7 +90,7 @@ function TimerServices(idmin, idseg){
             audio.pause();
             audio.currentTime = 0;
         }
-    }
+    }.bind(this);
     
     this.pausar = function() {
         this.timer.pausar();

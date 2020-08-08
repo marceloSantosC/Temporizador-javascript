@@ -7,4 +7,4 @@ Aplicar conhecimento Javascript e relembrar HTML e CSS e terminar o projeto que 
 :construction: Em construção :construction:
 ## Features :heavy_plus_sign:
 - [x] Contador regressivo :clock9:
-- [ ] Som ao final da contagem :speaker:
+- [x] Som ao final da contagem :speaker:
