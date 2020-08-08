@@ -4,58 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Temporizador</title>
-    <script src="script.js"></script>
-    <link rel="shortcurt icon" href="icones/clock-icon-aba.png" type="image/x-png">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="shortcurt icon" href="resources/images/icons/clock-icon-aba.png" type="image/x-png">
+    <link rel="stylesheet" type="text/css" href="src/style/style.css">
 </head>
 <body>
-<section id="conteudo">
+<main id="conteudo" >
     <div id="relogio">
         <div id="contador">
-            <span id="min">25</span>
+            <span id="min">0</span>
             <span>:</span>
-            <span id="seg">00</span>
+            <span id="seg">0</span>
         </div>
         <div id="opcoesTimer">
-            <button id="btnpausar">Pausar</button>
-            <button id="btniniciar">Iniciar</button>
-            <button id="btnresetar">Resetar</button>
+            <button id="btnpausar">
+                <img src="resources/images/icons/pause.png" alt="play">
+            </button>
+            <button id="btniniciar">
+                <img src="resources/images/icons/play.png" alt="play">
+            </button>
+            <button id="btnresetar">
+                <img src="resources/images/icons/stop.png" alt="play">
+            </button>
         </div>
     </div>
         <form id="controles"> 
             <div>
-                <label for="datalistmin">Minutos</label>
-                <input list="datalistmin" id="inputmin">
-                <datalist id="datalistmin">
-                    <option value="0"></option>
-                </datalist>
+                <label for="selectmin">Minutos</label>
+                <select name="selectmin" id="minselect">
+                    <option value="0" hidden selected>00</option>
+                </select>
             </div>
             <div>
-                <label for="datalistseg">Segundos</label>
-                <input list="datalistseg" id="inputseg">
-                <datalist id="datalistseg">
-                    <option value="0"></option>
-                </datalist>
+                <label for="selectseg">Segundos</label>
+                <select name="selectseg" id="segselect" value="0">
+                    <option value="0" hidden selected>00</option>
+                </select>
             </div>
         </form>
-</section>
+        <audio src="resources/audio/default.mp3">
+
+        </audio>
+</main>
 <footer id="footer">
     Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
 </footer>
-    <script>
-        function adicionarOptions(inicio = 0, fim = 0, id) {
-            const datalist = document.getElementById(id);
+<script src="src/scripts/script.js"></script>
+<script>
+        function adicionarOptions(inicio = 0, fim = 0, id, selected) {
+            const select = document.getElementById(id);
             let opt;
             for(let i = inicio; i < fim; i++) {
-                opt = document.createElement('option');
-                opt.setAttribute("value", i);
-                datalist.appendChild(opt);
+                opt = new Option(i, i);
+                select.appendChild(opt);
             }
         }
         
         function onchangeDatalist(timerServices){
-            const min = document.getElementById("inputmin");
-            const seg = document.getElementById("inputseg");
+            const min = document.getElementById("minselect");
+            const seg = document.getElementById("segselect");
             min.addEventListener("change", () => {
                 timerServices.onchangeMin(min.value);
 
@@ -67,28 +73,23 @@
         }
 
         function gerenciarEventosDom(timerServices) {
-            console.log(timerServices.timer)
             document.getElementById("btnpausar").addEventListener("click", timerServices.pausar);
+            document.getElementById("btniniciar").addEventListener("click", timerServices.iniciar);
             document.getElementById("btniniciar").addEventListener("click", timerServices.iniciar);
             document.getElementById("btnresetar").addEventListener("click", timerServices.resetar);
             onchangeDatalist(timerServices);
         }
 
         (function configurarDatalistMinutoSegundos(){
-            adicionarOptions(1, 60, "datalistmin");
-            adicionarOptions(1, 60, "datalistseg");
+            adicionarOptions(1, 60, "minselect", 25);
+            adicionarOptions(1, 60, "segselect", 0);
         })();
         
         const timerService = new TimerServices("min", "seg");
-        (function configurar(timerService) {
-            console.log(timerService);
-            gerenciarEventosDom(timerService);
+        timerService.setMinutos(0);
+        timerService.setSegundos(0);
+        gerenciarEventosDom(timerService);
 
-            
-        })(timerService);
-
-
-
-    </script>
+</script>
 </body>
 </html>

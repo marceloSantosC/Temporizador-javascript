@@ -19,14 +19,12 @@ function Timer(minutos, segundos, callback = () => {}){
             }
             else if(this.segundos == 0 || this.minutos == 1) {
                 this.minutos--;
-                this.minutos < 10 ? '0' + this.minutos :  this.minutos;
                 this.segundos = 59;
             }
             else if(this.segundos > 0) {                    
                 this.segundos--;
-                this.segundos < 10 ? '0' + this.segundos :  this.segundos;
             }
-            callback(this.minutos, this.segundos, this.terminado)
+            callback(this.minutos, this.segundos)
         }
     }
     this.contar = function(){
@@ -35,12 +33,13 @@ function Timer(minutos, segundos, callback = () => {}){
             clearInterval(intervalo);
             intervalo = setInterval(this.decrementarTempo, 1000, this)
         } else {
+            clearInterval(intervalo);
             valorInicial = {min: this.minutos, seg: this.segundos};
             intervalo = setInterval(this.decrementarTempo, 1000, this)
         }
-
     }.bind(this);
     this.pausar = function(){
+        clearInterval(intervalo);
         this.pausado = true;
     }.bind(this);
     this.resetar = function() {
@@ -78,9 +77,11 @@ function TimerServices(idmin, idseg){
     }.bind(this);
 
     this.setMinutos = function (minutos) {
+        minutos = minutos < 10 ? '0' + minutos :  minutos;
         min.innerHTML = minutos;
     };
     this.setSegundos = function (segundos) {
+        segundos = segundos < 10 ? '0' + segundos :  segundos;
         seg.innerHTML = segundos;
     };
     this.getMinutos = function () {
@@ -104,19 +105,3 @@ function TimerServices(idmin, idseg){
 
     }
 }
-
-
-
-
-
-
-
-
-
- 
-
- 
-
-
-
- 
