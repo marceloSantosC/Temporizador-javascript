@@ -55,6 +55,7 @@ body {
 
 #opcoesTimer button:hover{
     background-color: rgb(126, 125, 125);
+    cursor: pointer;
 }
 
 #opcoesTimer button:active{
