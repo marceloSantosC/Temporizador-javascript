@@ -66,21 +66,17 @@ function TimerServices(idmin, idseg){
     });
 
     this.reiniciar = function() {
-        if(this.getMinutos > 0 || this.getSegundos > 0) {
-            this.resetar();
-            this.iniciar();
-        }
         this.notificarFimDaContagem(1);
     }.bind(this);
 
     this.notificarFimDaContagem = function (acao) {
-        const alertaFimDoEvento = document.getElementById('alertafimevento');
+        const alertFimDoEvento = document.getElementById('alertFimDoEvento');
         if(acao == 0) {
             this.tocarOuReiniciarMusica(0);
-            alertaFimDoEvento.style = 'visibility: visible;';
+            alertFimDoEvento.style = 'visibility: visible;';
         } else {
             this.tocarOuReiniciarMusica(1);
-            alertaFimDoEvento.style = 'visibility: hidden;';
+            alertFimDoEvento.style = 'visibility: hidden;';
         }
     }.bind(this);
 

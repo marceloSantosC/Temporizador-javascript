@@ -33,6 +33,7 @@ body {
 #contador > span {
     font-size: 5.2rem;
     color: #696767;
+    font-family: 'Nova Square', cursive;
 }
 
 #opcoesTimer {
@@ -106,7 +107,7 @@ body {
     display: none;
 }
 
-#alertafimevento {
+#alertFimDoEvento {
     visibility: hidden;
     position: absolute;
     top: 5rem;
@@ -115,14 +116,14 @@ body {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    background-color: rgba(199, 195, 195, 0.459);
+    background-color: rgba(199, 195, 195, 0.7);
     margin-top: 0.5rem;
     width: 18rem;
     border-radius: 1rem;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-#alertafimevento p{
+#alertFimDoEvento p{
     align-self: center;
     font-size: 1.25rem;
     color: #494949;
@@ -131,7 +132,7 @@ body {
 }
 
 
-#alertafimevento button{
+#alertFimDoEvento button{
     font-size: 1rem;
     outline: 0;
     color: #fff;
@@ -148,7 +149,7 @@ body {
     transition: 0.4s;
 }
 
-#alertafimevento button:hover {
+#alertFimDoEvento button:hover {
     background-color: rgb(93, 117, 189);
 }
 

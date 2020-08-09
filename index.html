@@ -6,10 +6,11 @@
     <title>Temporizador</title>
     <link rel="shortcurt icon" href="resources/images/icons/clock-icon-aba.png" type="image/x-png">
     <link rel="stylesheet" type="text/css" href="src/style/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nova+Square&display=swap" rel="stylesheet">
 </head>
 <body>
 <main id="conteudo" >
-    <div id="alertafimevento">
+    <div id="alertFimDoEvento">
         <p>O cronômetro chegou a 0!</p>
         <button type="button" id="reiniciar">Reiniciar</button>
     </div>
@@ -33,13 +34,13 @@
     </div>
         <form id="controles"> 
             <div>
-                <label for="selectmin">Minutos</label>
-                <select name="selectmin" id="minselect">
+                <label for="selectMin">Minutos</label>
+                <select name="selectmin" id="minSelect">
                 </select>
             </div>
             <div>
-                <label for="selectseg">Segundos</label>
-                <select name="selectseg" id="segselect" value="0">
+                <label for="selectSeg">Segundos</label>
+                <select name="selectSeg" id="segSelect" value="0">
                 </select>
             </div>
         </form>
@@ -64,8 +65,8 @@
         }
         
         function onchangeDatalist(timerServices){
-            const min = document.getElementById("minselect");
-            const seg = document.getElementById("segselect");
+            const min = document.getElementById("minSelect");
+            const seg = document.getElementById("segSelect");
             min.addEventListener("change", () => {
                 timerServices.onchangeMin(min.value);
 
@@ -76,7 +77,7 @@
 
         }
 
-        function gerenciarEventosDom(timerServices) {
+        function gerarEventosDoDom(timerServices) {
             document.getElementById("reiniciar").addEventListener("click", timerServices.reiniciar);
             document.getElementById("btnpausar").addEventListener("click", timerServices.pausar);
             document.getElementById("btniniciar").addEventListener("click", timerServices.iniciar);
@@ -85,9 +86,9 @@
             onchangeDatalist(timerServices);
         }
 
-        (function configurarDatalistMinutoSegundos(){
-            adicionarOptions(0, 60, "minselect", 1);
-            adicionarOptions(0, 60, "segselect", 0);
+        (function gerarOptionsSelect(){
+            adicionarOptions(0, 60, "minSelect", 1);
+            adicionarOptions(0, 60, "segSelect", 0);
         })();
         
         const timerService = new TimerServices("min", "seg");
@@ -95,7 +96,7 @@
         window.addEventListener("load", () => {
             timerService.setMinutos(1);
             timerService.setSegundos(0);
-            gerenciarEventosDom(timerService);
+            gerarEventosDoDom(timerService);
         });
 
 </script>
